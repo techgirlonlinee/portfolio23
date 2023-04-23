@@ -51,7 +51,7 @@ projectLinks.forEach((link) => {
 });
 
 // highlight project name on viewport
-
+//some change
 window.addEventListener("scroll", highlightProjectName);
 
 function highlightProjectName() {
