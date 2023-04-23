@@ -1,0 +1,167 @@
+body {
+  background-color: #f7f7f7;
+  /* background-color: white; */
+  margin: 0;
+  /* font-family: sans-serif; */
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* nav */
+nav {
+  position: fixed;
+  top: 0;
+  right: -201px;
+  transform: rotate(90deg) translateX(50%);
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  color: white;
+  mix-blend-mode: difference;
+  transition: transform 0.3s ease-out;
+}
+
+nav div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.expanded {
+  height: 25vh;
+}
+
+.retracted {
+  height: 24px;
+  opacity: 0;
+}
+
+/* .nav-trans {
+  transform: rotate(90deg) translateX(100%);
+  margin-top: 12px;
+}
+
+.nav-orig {
+  transform: rotate(90deg) translateX(50%);
+} */
+
+/* top bar */
+.top-bar {
+  background-color: #4325f7;
+  color: white;
+  transition: height 0.3s ease-out;
+  position: fixed;
+  top: 0;
+}
+
+#the-box {
+  transition: height 0.3s ease-out;
+}
+
+.magic-box {
+  width: 24px;
+  height: 24px;
+  background-color: #f85825;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* homepage */
+section.projects {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-gap: 20px; /* optional gap between columns */
+  margin-top: 24px;
+}
+
+section.projects .project-names-list {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  /* top: 24px; */
+  left: 67%;
+  transition: transform 0.3s ease-out;
+}
+
+.project-images-list {
+  z-index: -1;
+  transition: transform 0.3s ease-out;
+}
+
+.project-image {
+  margin-bottom: 48px;
+}
+.project-image img {
+  width: 100%;
+  /* height: 400px; */
+  height: auto;
+}
+
+.project-image p {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.project-images-list p {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.projects p {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.project-names-list {
+  /* color: white; */
+  mix-blend-mode: difference;
+}
+.project-names-list a {
+  font-size: 40px;
+  color: white;
+  mix-blend-mode: difference;
+  width: fit-content;
+}
+
+.project-names-list a:hover {
+  color: #f85825;
+  /* color: #069fd2; */
+  mix-blend-mode: normal;
+}
+
+/* Draw */
+div.cursor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #29044a;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s;
+}
+
+div.cursor.is-down {
+  width: 80px;
+  height: 80px;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background-color: white;
+}
+
+.highlighted {
+  color: red !important;
+}
