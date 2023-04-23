@@ -50,32 +50,51 @@ projectLinks.forEach((link) => {
   });
 });
 
-// highlight project name on viewport
-//some change
-window.addEventListener("scroll", highlightProjectName);
+let imageInView = undefined;
+
+highlightProjectName();
+
+function getNumberOfPixelsInView(element) {
+  const rect = element.getBoundingClientRect();
+  const windowHeight =
+    window.innerHeight || document.documentElement.clientHeight;
+  const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+  const pixelsInView =
+    Math.max(0, Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0)) *
+    Math.max(0, Math.min(rect.right, windowWidth) - Math.max(rect.left, 0));
+  return pixelsInView;
+}
 
 function highlightProjectName() {
-  const projectItems = document.querySelectorAll(".project-images-list");
-  projectItems.forEach((item) => {
-    const projectImg = item.querySelector(".project-image");
-    const projectName = projectImg.dataset.name;
-    console.log(projectImg.classList);
-    projectImg.classList.add("highlighted");
-    console.log(projectImg);
-    const bounding = item.getBoundingClientRect();
-    const windowHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-    const project = document.querySelector('[data-project="project1"]');
-    console.log({ project });
-    project.classList.add("highlighted");
-
-    if (
-      bounding.top + windowHeight * 0.5 >= 0 &&
-      bounding.bottom - windowHeight * 0.5 <= windowHeight &&
-      getComputedStyle(projectImg).getPropertyValue("display") !== "none"
-    ) {
-    } else {
-      projectImg.classList.remove("highlighted");
+  const images = document.querySelectorAll(".project-image");
+  let mostInView = images[0];
+  let mostInViewPixels = 0;
+  for (let i = 0; i < images.length; i++) {
+    const pixelsInView = getNumberOfPixelsInView(images[i]);
+    if (pixelsInView > mostInViewPixels) {
+      mostInView = images[i];
+      mostInViewPixels = pixelsInView;
     }
-  });
+  }
+
+  if (imageInView === undefined) {
+    const newNameNode = document.querySelector(
+      `[data-project="${mostInView.id}"]`
+    );
+    newNameNode.classList.add("highlighted");
+    imageInView = mostInView.id;
+  } else if (mostInView.id !== imageInView) {
+    const previousNameNode = document.querySelector(
+      `[data-project="${imageInView}"]`
+    );
+    const newNameNode = document.querySelector(
+      `[data-project="${mostInView.id}"]`
+    );
+    previousNameNode.classList.remove("highlighted");
+    newNameNode.classList.add("highlighted");
+
+    imageInView = mostInView.id;
+  }
 }
+
+window.addEventListener("scroll", highlightProjectName);
