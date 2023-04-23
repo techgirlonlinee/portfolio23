@@ -2,7 +2,7 @@ body {
   background-color: #f7f7f7;
   /* background-color: white; */
   margin: 0;
-  /* font-family: sans-serif; */
+  font-family: sans-serif;
 }
 
 p {
@@ -116,7 +116,8 @@ section.projects .project-names-list {
 }
 
 .projects p {
-  color: white;
+  /* color: white; */
+  color: #f85825;
   mix-blend-mode: difference;
 }
 
