@@ -6,30 +6,35 @@ document.addEventListener("scroll", (event) => {
 const theBox = document.getElementById("the-box");
 const magicBox = document.getElementById("magic-box");
 const nav = document.querySelector("nav");
-const topBar = document.querySelector("top-bar");
+const topBar = document.querySelector(".top-bar");
 const namesList = document.querySelector(".project-names-list");
 const imgsList = document.querySelector(".project-images-list");
 
-magicBox.addEventListener("mouseover", function () {
+// topBar.addEventListener("mouseover", function () {
+//   console.log("mouseover");
+//   theBox.classList.add("expanded");
+//   theBox.classList.remove("retracted");
+//   nav.style.transform = "rotate(90deg) translateX(100%)";
+//   //   nav.style.marginTop = "-20px";
+//   //   nav.style.marginTop = "-20px";
+//   //   namesList.style.top = "25vh";
+//   namesList.style.transform = "translateY(22vh)";
+//   imgsList.style.transform = "translateY(25vh)";
+//   //   namesList.style.marginTop = "0px";
+// });
+
+topBar.addEventListener("mouseover", function () {
   console.log("mouseover");
   theBox.classList.add("expanded");
   theBox.classList.remove("retracted");
-  nav.style.transform = "rotate(90deg) translateX(100%)";
-  //   nav.style.marginTop = "-20px";
-  //   nav.style.marginTop = "-20px";
-  //   namesList.style.top = "25vh";
-  namesList.style.transform = "translateY(22vh)";
-  imgsList.style.transform = "translateY(25vh)";
-  //   namesList.style.marginTop = "0px";
+  namesList.style.transform = "translateY(calc(50vh - 24px))";
+  imgsList.style.transform = "translateY(calc(50vh - 24px))";
 });
 
-magicBox.addEventListener("mouseleave", function () {
+topBar.addEventListener("mouseleave", function () {
   console.log("mouseleave");
   theBox.classList.add("retracted");
   theBox.classList.remove("expanded");
-  nav.style.transform = "rotate(90deg) translateX(50%)";
-  //   nav.style.marginTop = "20px";
-  //   namesList.style.top = "24px";
   namesList.style.transform = "translateY(0)";
   imgsList.style.transform = "translateY(0)";
 });

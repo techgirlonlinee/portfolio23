@@ -1,10 +1,13 @@
 body {
   display: flex;
+  color: white;
 }
 
 p,
 a {
   margin: 0;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 img {
@@ -69,9 +72,25 @@ section .case-studies,
   bottom: 12px;
 }
 
+.page-nav a {
+  color: white;
+  mix-blend-mode: difference;
+}
 .case-title {
 }
 
 section.case-studies {
   margin-top: 48px;
+}
+
+/* canvas */
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background-color: white;
 }
